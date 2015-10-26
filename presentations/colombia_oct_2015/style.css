@@ -1,0 +1,50 @@
+
+img {
+  border-radius: 3px;
+  border: 1px #ccc solid;
+  width: 80%;
+  position: relative;
+  display:block;
+  left: 50%;
+  margin-left: -40%;
+}
+
+.logos img {
+  width: 220px;
+  left: 0;
+  margin-left: 0;
+  display: inline-block;
+}
+
+.big img {
+  width: 100%;
+  left: 0;
+  margin-left: 0;
+}
+
+.med img {
+  width: 40%;
+  left: 0;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.height img {
+  height: 500px;
+  width: auto;
+  left: 0;
+  margin-left: 0;
+}
+
+@media print{
+  @page {
+    size: landscape
+
+  }
+  body {
+  }
+  section {
+    page-break-after:always;
+    border: none;
+  }
+}
