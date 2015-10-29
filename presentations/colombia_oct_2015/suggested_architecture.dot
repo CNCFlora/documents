@@ -1,0 +1,60 @@
+digraph {
+
+  database[color=gold];
+
+  sib_catalogo[color=blue];
+  sib_oauth[color=blue];
+  sib_portal[color=blue];
+  biomodelos[color=blue];
+
+  catalogo_flora_ipt[color=red];
+  catalogo_fauna_ipt[color=red];
+
+  occurrences_importer[color=red];
+  profile_importer[color=red];
+
+  connect[color=green];
+  taxonomy[color=red];
+
+  dwc_services[color=green];
+
+  services[color=green];
+  checklist[color=green];
+  occurrences[color=green];
+  profiles[color=green];
+  assessment[color=green];
+
+  connect -> sib_oauth[label=uses];
+
+  sib_portal -> catalogo_flora_ipt[label=read];
+  sib_portal -> catalogo_fauna_ipt[label=read];
+
+  occurrences_importer -> sib_portal[label=read];
+  occurrences_importer -> biomodelos[label=read];
+  occurrences_importer -> database[label=write];
+
+  profile_importer -> sib_catalogo[label=read];
+  profile_importer -> database[label=write];
+
+  taxonomy -> sib_portal[label=read];
+  taxonomy -> database[label=write];
+
+  assessment -> connect [label=uses];
+  checklist -> connect [label=uses];
+  profiles -> connect [label=uses];
+  occurrences -> connect [label=uses];
+
+  checklist -> database [label=read_write];
+  occurrences -> database [label=read_write];
+  occurrences -> dwc_services [label=uses]
+  profiles -> database[label=read_write];
+  assessment -> database [label=read_write];
+
+  services -> database [label=read];
+
+  {rank=min; catalogo_flora_ipt, catalogo_fauna_ipt, sib_portal, sib_oauth, sib_catalogo, biomodelos}
+  {rank=same; taxonomy, occurrences_importer, profile_importer, connect}
+  {rank=source;  occurrences, assessment, profiles, checklist}
+  {rank=max; database,services}
+
+}

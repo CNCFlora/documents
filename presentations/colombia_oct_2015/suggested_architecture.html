@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suggested Architecture and development for Colombia Risk Assessment</title>
+</head>
+<body>
+  <h1>Suggested Architecture and development for Colombia Risk Assessment</h1>
+  
+  <p>Here is suggested how to use existing tools and what is needed to be developed in this approach.</p>
+
+  <img src="suggested_architecture.jpg" />
+
+  <p>
+    <strong>Red</strong>: need to be build;
+    <strong>Blue</strong>: Existis;
+    <strong>Green</strong>: Adapt from CNCFlora;
+    <strong>Yellow</strong>: Database; 
+  </p>
+  
+  <h2>Parts</h2>
+
+  <h3>Biomdelos</h3>
+  <p>Biomodelos allow users to input occurrence data for distribution models to be generated. This models and occurrences can also be validated</p>
+  <p>This system could be used a source of occurrence data.</p>
+
+  <h3>Catalogo Flora</h3>
+  <p>Catalogo da flora is the taxonomy authority for flora. It needs to publish it's data on IPT to enable import on SIB.</p>
+
+  <h3>Catalogo Fauna</h3>
+  <p>Does this exists? Catalogo da fauna is the taxonomy authority for fauna. It needs to publish it's data on IPT to enable import on SIB.</p>
+
+  <h3>Sib - Portal</h3>
+  <p>Sib portal here is the Occurrence Backend and taxonomy sources. It needs to import the taxonomic data from the Catalogos to provide an authorative source.</p>
+
+  <h3>Sib - Catalogo</h3>
+  <p>Compreheends ecological and general information about species.</p>
+
+  <h3>Sib - OAuth</h3>
+  <p>Allow the same user to be used in multiple applications.</p>
+
+  <h3>Occurrences, taxonomy and profile importers</h3>
+  <p>It is needed to build tools that will allow the risk assessment to posses data from the sources.</p>
+  <p>It is important to have such data local to be able to keep it's own history in case of changes on the original sources.</p>
+
+  <h3>Database</h3>
+  <p>In the case of CNCFlora tools, it is the combination of CouchDB and ElasticSearch.</p>
+
+  <h3>Connect</h3>
+  <p>Needs to be adapted to use Sib Oauth as the authentication mechanism. Here is where the authorization profiles will be kept.</p>
+
+  <h3>Checklist</h3>
+  <p>Allow the creation of databases as groups of species, important to keep the separation of work groups over time.</p>
+
+  <h3>dwc_services</h3>
+  <p>There are services to support operation on dwc occurrences.</p>
+
+  <h3>Occurrences</h3>
+  <p>Tool to upload, insert, georeference, validate and search occurrence data.</p>
+
+  <h3>Profiles</h3>
+  <p>Tool to provide the workflow to work on ecology and general data.</p>
+
+  <h3>Assessment</h3>
+  <p>Tool to provide the workflow to do the risk assessment.</p>
+
+
+
+  <h3>Services</h3>
+  <p>General services to publish the data.</p>
+
+  
+
+
+</body>
+</html>
