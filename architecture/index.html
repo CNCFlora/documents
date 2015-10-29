@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>CNCFlora - Architecture</title>
+  <style type="text/css">
+    img {
+      width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Architecture of CNCFlora systems</h1>
+
+  <p><a href='http://github.com/cncflora'>CNCFlora Github</a></p>
+
+  <img src="index.jpg" />
+  <p>
+    <strong>Legend:</strong>
+    Green: user facing application; 
+    Yellow: Database;
+    Blue: webservice; 
+    Grey: external source;
+    Dark-green: publishing;
+  </p>
+
+  <h2>Description of parts</h2>
+
+  <section>
+    <h3><a href='http://floradobrasil.jbrj.gov.br'>Flora do Brasil</a></h3>
+    <p>Authoritative taxonomic source. Exposes an <a href='http://ipt.jbrj.gov.br/jbrj'>IPT</a> with it1s data.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/floradata">Floradata</a></h3>
+    <p>Consumes Flora do Brasil's IPT into an SQLite database more suitable, and exposes names webservices API on the taxonomy.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/diogok/dwc_services">DwC-Services</a></h3>
+    <p>Library and API to handle darwin core operations: Convertion between file formats (xlsx,csv, dwc-a, json,geojson), validation, fix common problems and perform some analysis.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/connect">Connect</a></h3>
+    <p>Single Sign On solution for all the apps.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/couchdb">CouchDB</a></h3>
+    <p>Restful, schemaless, document database. You operate only with HTTP and JSON. Good on persistency (never fails), replication and Map/Reduce.</p>
+    <p>It is used as the main storage.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/dockers/tree/master/elasticsearch">ElasticSearch</a></h3>
+    <p>Indexing and search server.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/checklist">Checklist</a></h3>
+    <p>Allow the grouping of species in a checklist, creating the database in couchdb and index on elasticsearch.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/occurrences">Occurrences</a></h3>
+    <p>Manipulates the occurrences data. Allows upload, insertion, georeferencing, searching by species with synonyms (from checklist), validation and analysis.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/SpeciesProfiles">Profiles</a></h3>
+    <p>Specie profile with ecological data, with workflow for creation, validation and reviewing.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/assessments">Assessments</a></h3>
+    <p>Workflow for risk assessment.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/entrypoint">Entrypoing</a></h3>
+    <p>Entrypoint with links for the different applications on differente checklists.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/services">Services</a></h3>
+    <p>Publishing API.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/reports">Reports</a></h3>
+    <p>Generate CSV (and a SQLite) files with the data, and publish them on CKAN.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://dados.jbrj.gov.br/ckan">CKAN</a></h3>
+    <p>User friendly data publishing tool.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://cncflora.jbrj.gov.br">Portal</a></h3>
+    <p>Our web portal, reads the redlist from the services.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/dockers">Dockers</a></h3>
+    <p>Base docker containers, specially: Apache, Ruby, Java8, ElasticSearch, CouchDB, kibana and selenium.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/diogok/docker-proxy">Docker Proxy</a></h3>
+    <p>Dynamic NGINX proxy for the docker containers.</p>
+  </section>
+
+  <section>
+    <h3><a href="http://github.com/cncflora/nuvem">Nuvem</a></h3>
+    <p>Project using docker-compose to run all the apps.</p>
+  </section>
+  
+</body>
+</html>

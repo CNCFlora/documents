@@ -1,0 +1,62 @@
+digraph {
+
+  couchdb[color=gold,group=db] ;
+  elasticsearch[color=gold,group=db];
+  sqlite[color=gold,group=db];
+
+  flora_do_brasil[color=gray];
+  floradata[color=blue,group=ws];
+
+  dwc_services[color=blue,group=ws];
+
+  connect[color=green];
+
+  checklist[color=green];
+  occurrences[color=green];
+  profiles[color=green];
+  assessment[color=green];
+
+  services[color=blue];
+  reports[color=darkgreen];
+  portal[color=darkgreen];
+  ckan[color=darkgreen];
+  kibana[color=darkgreen];
+
+  floradata -> flora_do_brasil [label=consume];
+  floradata -> sqlite [label=uses];
+
+  checklist -> couchdb [label=write];
+  checklist -> elasticsearch [label=read];
+
+  checklist -> floradata [label=consume];
+
+  occurrences -> couchdb [label=write];
+  occurrences -> elasticsearch [label=read];
+
+  occurrences -> dwc_services [label=uses]
+
+  profiles -> couchdb [label=write];
+  profiles -> elasticsearch [label=read];
+
+  assessment -> couchdb [label=write];
+  assessment -> elasticsearch [label=read];
+
+
+  assessment -> connect [label=uses];
+  checklist -> connect [label=uses];
+  profiles -> connect [label=uses];
+  occurrences -> connect [label=uses];
+
+  services -> elasticsearch [label=read];
+  portal -> services [label=read];
+  reports -> couchdb [label=read];
+  reports -> ckan[label=write];
+  kibana -> elasticsearch[label=read];
+
+  {rank=min; floradata, dwc_services,connect}
+  {rank=same; occurrences, checklist, profiles, occurrences, assessment}
+  {rank=same; couchdb, elasticsearch}
+  {rank=max; services, reports,kibana}
+  {rank=sink; ckan, portal}
+
+}
